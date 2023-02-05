@@ -4,8 +4,8 @@ const client = axios.create({
     baseURL: "https://accounts.spotify.com"
 });
 
-const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID || '';
-const clientSecret = process.env.REACT_APP_SPOTIFY_CLIENT_SECRET;
+const clientId = process.REACT_APP_SPOTIFY_CLIENT_ID || '';
+const clientSecret = process.REACT_APP_SPOTIFY_CLIENT_SECRET;
 const redirectUri = 'http://localhost:3000/callback/';
 
 export type AccessToken = {
@@ -16,6 +16,7 @@ export type AccessToken = {
     refresh_token: string
 };
 
+console.log(clientSecret);
 
 export const getAccessToken = async (code: string, state: string, abortController: AbortController) => {
 
@@ -39,7 +40,6 @@ export const getAccessToken = async (code: string, state: string, abortControlle
 };
 
 export const getRefreshAccessToken = async (refresh_token: string) => {
-    console.log("rergfere");
     let response = await client.post('/api/token', {
             refresh_token,
             grant_type: 'refresh_token'
@@ -65,7 +65,7 @@ const generateRandomString = (length: number) => {
 };
 
 export const goToSpotifyAuthorisation = () => {
-    const scope = 'user-read-private user-read-email user-follow-read';
+    const scope = 'user-read-private user-read-email';
 
     const state = generateRandomString(16);
 

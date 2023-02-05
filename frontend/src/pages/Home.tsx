@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import MutualSearch from "./MutualSearch";
-import { goToSpotifyAuthorisation} from "../services/AuthorisationService";
 import { AuthContext } from "../contexts/AuthContext";
 import { useSearchParams } from "react-router-dom";
 

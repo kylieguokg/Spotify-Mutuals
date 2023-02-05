@@ -7,6 +7,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
+import WithAxios from './services/WithAxios';
 
 function App() {
 
@@ -15,11 +16,13 @@ function App() {
     <>
       <Router>
         <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            {/* <Route path="/login" element={<Login/>} /> */}
-            <Route path="/callback" to = "/" element = {<Home/>} />
-          </Routes>
+          <WithAxios>
+            <Routes>
+              <Route path="/" element={<Home/>} />
+              {/* <Route path="/login" element={<Login/>} /> */}
+              <Route path="/callback" to = "/" element = {<Home/>} />
+            </Routes>
+          </WithAxios>
         </AuthProvider>
       </Router>
     </>
